@@ -60,28 +60,28 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
 ## 📷 Ảnh chụp màn hình
 ## 📷 Ảnh chụp màn hình
 <p align="center">
-  <img src="SunnyEnglish/login.jpg" width="200" style="margin-right: 20px;"/> 
-  <img src="SunnyEnglish/signup.jpg" width="200"/>
+  <img src="SunnyEnglish/login.jpg" width="300" /> 
+  <img src="SunnyEnglish/signup.jpg" width="300"/>
 </p>
 
 <p align="center">
-  <img src="SunnyEnglish/main_activity.jpg" width="300" style="margin-right: 20px;"/> 
-  <img src="SunnyEnglish/signup.jpg" width="200"/>
+  <img src="SunnyEnglish/main_activity.jpg" width="300" s/> 
+  <img src="SunnyEnglish/signup.jpg" width="300"/>
 </p>
 
 <p align="center">
-  <img src="SunnyEnglish/information.jpg" width="300" style="margin-right: 20px;"/> 
-  <img src="SunnyEnglish/danhsactv_activity.jpg" width="200"/>
+  <img src="SunnyEnglish/information.jpg" width="300" > 
+  <img src="SunnyEnglish/danhsactv_activity.jpg" width="300"/>
 </p>
 
 <p align="center">
-  <img src="SunnyEnglish/dienkhuyet_activity.jpg" width="300" style="margin-right: 20px;"/> 
-  <img src="SunnyEnglish/ontap_activity.jpg" width="200"/>
+  <img src="SunnyEnglish/dienkhuyet_activity.jpg" width="300" /> 
+  <img src="SunnyEnglish/ontap_activity.jpg" width="300"/>
 </p>
 
 <p align="center">
-  <img src="SunnyEnglish/tracnghiem_activity.jpg" width="300" style="margin-right: 20px;"/> 
-  <img src="SunnyEnglish/ketqua.jpg" width="200"/>
+  <img src="SunnyEnglish/tracnghiem_activity.jpg" width="300" /> 
+  <img src="SunnyEnglish/ketqua.jpg" width="300"/>
 </p>
 
 <p align="center">
