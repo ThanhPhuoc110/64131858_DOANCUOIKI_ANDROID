@@ -22,14 +22,15 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
 {
   "BoHocTap": {
     "idBo1": {
-      "tenBo": "Học tiếng Anh cơ bản",
-      "mota": "Chương trình học cho người mới bắt đầu"
+      "idBo" : idBo1
+      "tenBo": "Bộ học tập số 1",
+      "stt": "1"
     }
   },
   "TracNghiem": {
     "idCau1": {
       "idBoHocTap": "idBo1",
-      "noiDung": "Chọn từ đúng điền vào chỗ trống",
+      "noiDung": "Nội dung",
       "dapanA": "go",
       "dapanB": "went",
       "dapanC": "going",
@@ -41,7 +42,7 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
     "idCau1": {
       "idBoHocTap": "idBo1",
       "noiDung": "I ____ to the market yesterday.",
-      "goiY": "Thời quá khứ",
+      "goiY": "went go run walk",
       "dapAn": "went"
     }
   },
@@ -55,6 +56,7 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
     }
   }
 }
+```
 ## 🛠 Cài đặt
 Dễ dàng cài đặt ứng dụng bằng cách:
 ```sh
