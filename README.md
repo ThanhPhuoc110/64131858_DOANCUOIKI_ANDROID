@@ -58,7 +58,9 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
 }
 ```
 ## 📷 Ảnh chụp màn hình
-![Icon app](SunnyEnglish/login.jpg)            ![Icon app](SunnyEnglish/signup.jpg) 
+| **Màn hình đăng nhập** | **Màn hình đăng ký** |
+|:----------------------:|:--------------------:|
+| ![Login](SunnyEnglish/login.jpg) | ![Sign Up](SunnyEnglish/signup.jpg) |
 
 ## 🛠 Cài đặt
 Dễ dàng cài đặt ứng dụng bằng cách:
