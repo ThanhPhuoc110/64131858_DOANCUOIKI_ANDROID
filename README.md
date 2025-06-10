@@ -59,10 +59,9 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
 ```
 ## 📷 Ảnh chụp màn hình
 ## 📷 Ảnh chụp màn hình
-
 <p align="center">
   <img src="SunnyEnglish/login.jpg" width="200" style="margin-right: 20px;"/> 
-  <img src="SunnyEnglish/signup.jpg" width="300"/>
+  <img src="SunnyEnglish/signup.jpg" width="200"/>
 </p>
 
 <p align="center">
