@@ -13,10 +13,48 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
 - 🌎 **Hỗ trợ nhiều ngôn ngữ**, từ tiếng Anh, tiếng Pháp, đến tiếng Nhật và hơn thế nữa!
 ## ⚙️ Chức năng Quản lý
 Ứng dụng hỗ trợ các thao tác quản lý:
-- ➕ **Thêm** tính năng mới vào hệ thống.
-- ✏️ **Chỉnh sửa** nội dung của một tính năng có sẵn.
-- 🗑️ **Xóa** tính năng không còn cần thiết.
-
+- ➕ **Thêm** bộ học tập, từ vựng, câu điền khuyết, câu trắc nghiệm mớ.
+- ✏️ **Chỉnh sửa** thông tin của bộ học tập, từ vựng, câu điền khuyết, câu trắc nghiệm hiện có.
+- 🗑️ **Xóa** nội dung không còn cần thiết để tối ưu hóa dữ liệu.
+## 🗄️ Quản lý Dữ Liệu
+Ứng dụng sử dụng Firebase Realtime Database để lưu trữ và quản lý dữ liệu học tập theo cấu trúc phân cấp, đảm bảo hiệu suất cao và truy cập nhanh.
+```json
+{
+  "BoHocTap": {
+    "idBo1": {
+      "tenBo": "Học tiếng Anh cơ bản",
+      "mota": "Chương trình học cho người mới bắt đầu"
+    }
+  },
+  "TracNghiem": {
+    "idCau1": {
+      "idBoHocTap": "idBo1",
+      "noiDung": "Chọn từ đúng điền vào chỗ trống",
+      "dapanA": "go",
+      "dapanB": "went",
+      "dapanC": "going",
+      "dapanD": "gone",
+      "dapAnTrue": "2"
+    }
+  },
+  "DienKhuyet": {
+    "idCau1": {
+      "idBoHocTap": "idBo1",
+      "noiDung": "I ____ to the market yesterday.",
+      "goiY": "Thời quá khứ",
+      "dapAn": "went"
+    }
+  },
+  "TuVung": {
+    "idTu1": {
+      "idBoTuVung": "idBo1",
+      "tu": "hello",
+      "dichnghia": "Xin chào",
+      "loaitu": "Danh từ",
+      "anh": "URL_Hinh_Anh"
+    }
+  }
+}
 ## 🛠 Cài đặt
 Dễ dàng cài đặt ứng dụng bằng cách:
 ```sh
