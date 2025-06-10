@@ -57,6 +57,9 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
   }
 }
 ```
+## 📷 Ảnh chụp màn hình
+![Icon app](Screenshot/anhicon.png)
+
 ## 🛠 Cài đặt
 Dễ dàng cài đặt ứng dụng bằng cách:
 ```sh
