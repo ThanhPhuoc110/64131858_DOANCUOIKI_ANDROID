@@ -1,7 +1,7 @@
 # 🌍 LanguageApp - Ứng dụng Học Đa Ngôn Ngữ 
 
 [//]: # (Thêm ảnh minh họa tại đây)
-![Icon app](drawble/anhicon.png)
+![Icon app](E123/app/src/main/res/drawable/anhicon.png)
 
 ## 🚀 Giới thiệu
 SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ngôn ngữ khác nhau một cách trực quan và hiệu quả. Với các công cụ hỗ trợ thông minh, việc học ngôn ngữ chưa bao giờ dễ dàng hơn.
