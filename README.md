@@ -58,18 +58,37 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
 }
 ```
 ## 📷 Ảnh chụp màn hình
-| ![Login](SunnyEnglish/login.jpg) | ![Sign Up](SunnyEnglish/signup.jpg) |
-|:----------------------:|:--------------------:|
-| ![Màn hình chính](SunnyEnglish/main_activity.jpg) | ![Đăng kí](SunnyEnglish/signup.jpg) |
-|:----------------------:|:--------------------:|
-| ![Thông](SunnyEnglish/informatio.jpg) | ![Danh sách từ vựng](SunnyEnglish/danhsactv_activity.jpg) |
-|:----------------------:|:--------------------:|
-| ![Câu điền khuyết](SunnyEnglish/dienkhuyet_activity.jpg) | ![Ôn tập từ vựng](SunnyEnglish/ontap_activity.jpg) |
-|:----------------------:|:--------------------:|
-| ![Câu trắc nghiệm](SunnyEnglish/tracnghiem_activity) | ![Kết quả](SunnyEnglish/ketqua.jpg) |
-|:----------------------:|:--------------------:|
-| ![Xếp hạng](SunnyEnglish/xephang.jpg) | 
-|:----------------------:|:--------------------:|
+## 📷 Ảnh chụp màn hình
+
+<p align="center">
+  <img src="SunnyEnglish/login.jpg" width="200"/> 
+  <img src="SunnyEnglish/signup.jpg" width="200"/>
+</p>
+
+<p align="center">
+  <img src="SunnyEnglish/main_activity.jpg" width="200"/> 
+  <img src="SunnyEnglish/signup.jpg" width="200"/>
+</p>
+
+<p align="center">
+  <img src="SunnyEnglish/information.jpg" width="200"/> 
+  <img src="SunnyEnglish/danhsactv_activity.jpg" width="200"/>
+</p>
+
+<p align="center">
+  <img src="SunnyEnglish/dienkhuyet_activity.jpg" width="200"/> 
+  <img src="SunnyEnglish/ontap_activity.jpg" width="200"/>
+</p>
+
+<p align="center">
+  <img src="SunnyEnglish/tracnghiem_activity.jpg" width="200"/> 
+  <img src="SunnyEnglish/ketqua.jpg" width="200"/>
+</p>
+
+<p align="center">
+  <img src="SunnyEnglish/xephang.jpg" width="200"/> 
+</p>
+
 
 
 
