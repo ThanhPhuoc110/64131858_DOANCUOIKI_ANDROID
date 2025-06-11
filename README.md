@@ -22,7 +22,7 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
 {
   "BoHocTap": {
     "idBo1": {
-      "idBo" : idBo1
+      "idBo" : "idBo1",
       "tenBo": "Bộ học tập số 1",
       "stt": "1"
     }
@@ -36,6 +36,7 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
       "dapanC": "going",
       "dapanD": "gone",
       "dapAnTrue": "2"
+      "idCau":"idCau1"
     }
   },
   "DienKhuyet": {
@@ -43,7 +44,8 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
       "idBoHocTap": "idBo1",
       "noiDung": "I ____ to the market yesterday.",
       "goiY": "went go run walk",
-      "dapAn": "went"
+      "dapAn": "went",
+      "idCau":"idCau1"
     }
   },
   "TuVung": {
@@ -52,12 +54,13 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
       "tu": "hello",
       "dichnghia": "Xin chào",
       "loaitu": "Danh từ",
-      "anh": "URL_Hinh_Anh"
+      "anh": "URL_Hinh_Anh",
+      "idTu":"idTu1"
     }
   }
 }
 ```
-## 📷 Ảnh chụp màn hình
+
 ## 📷 Ảnh chụp màn hình
 <p align="center">
   <img src="SunnyEnglish/login.jpg" width="300" /> 
@@ -86,17 +89,8 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
 
 <p align="center">
   <img src="SunnyEnglish/xephang.jpg" width="300"/> 
+  <img src="SunnyEnglish/
 </p>
 
 
 
-
-
-
-## 🛠 Cài đặt
-Dễ dàng cài đặt ứng dụng bằng cách:
-```sh
-git clone https://github.com/yourusername/LanguageMaster.git
-cd LanguageMaster
-npm install
-npm start
