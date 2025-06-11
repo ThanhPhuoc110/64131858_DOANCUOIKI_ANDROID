@@ -28,9 +28,9 @@ import ntp.example.e123.R;
 import ntp.example.e123.bohoctap.BoHocTap;
 
 public class QLBoHocTapAdapter extends BaseAdapter {
-    private Context context;
-    private ArrayList<BoHocTap> list;
-    private DatabaseReference boHocTapeRef;
+ Context context;
+ArrayList<BoHocTap> list;
+DatabaseReference boHocTapeRef;
 
     public QLBoHocTapAdapter(Context context, ArrayList<BoHocTap> list) {
         this.context = context;
@@ -78,7 +78,7 @@ public class QLBoHocTapAdapter extends BaseAdapter {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Xác nhận xóa");
-                builder.setMessage("Bạn chắc chắn muốn xóa từ vựng này?");
+                builder.setMessage("Bạn chắc chắn muốn xóa bộ học tập này này?");
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

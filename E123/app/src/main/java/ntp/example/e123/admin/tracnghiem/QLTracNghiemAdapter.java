@@ -67,7 +67,7 @@ public class QLTracNghiemAdapter extends BaseAdapter {
         imgEdit.setOnClickListener(v -> {
             Intent intent = new Intent(context, EditTracNghiemActivity.class);
             intent.putExtra("ID_TN", tn.getIdCau());
-            intent.putExtra("idBoHocTap", tn.getIdBoHocTap()); // Truyền ID bộ học tập
+            intent.putExtra("idBoHocTap", tn.getIdBoHocTap());
             context.startActivity(intent);
         });
 
@@ -76,7 +76,7 @@ public class QLTracNghiemAdapter extends BaseAdapter {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Xác nhận xóa");
-                builder.setMessage("Bạn chắc chắn muốn xóa từ vựng này?");
+                builder.setMessage("Bạn chắc chắn muốn xóa trắc nghiệm này?");
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

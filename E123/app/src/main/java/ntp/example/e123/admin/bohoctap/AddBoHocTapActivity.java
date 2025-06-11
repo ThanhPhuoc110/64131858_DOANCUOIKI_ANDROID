@@ -20,9 +20,9 @@ import ntp.example.e123.R;
 import ntp.example.e123.bohoctap.BoHocTap;
 
 public class AddBoHocTapActivity extends AppCompatActivity {
-    private ImageView imgBack, imgAdd;
-    private EditText edtBoHocTap;
-    private DatabaseReference boHocTapRef;
+     ImageView imgBack, imgAdd;
+     EditText edtBoHocTap;
+     DatabaseReference boHocTapRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -23,11 +23,11 @@ import ntp.example.e123.R;
 import ntp.example.e123.bohoctap.BoHocTap;
 
 public class EditBoHocTapActivity extends AppCompatActivity {
-    private ImageView imgBack, imgEdit;
-    private EditText edtBoHocTap;
-    private DatabaseReference boHocTapRef;
-    private String idBHT;
-    private BoHocTap boHocTap;
+    ImageView imgBack, imgEdit;
+ EditText edtBoHocTap;
+ DatabaseReference boHocTapRef;
+ String idBHT;
+  BoHocTap boHocTap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,17 +44,24 @@ public class EditBoHocTapActivity extends AppCompatActivity {
         boHocTapRef = FirebaseDatabase.getInstance().getReference("BoHocTap").child(idBHT);
 
         fetchBoHocTap();
-
-        imgBack.setOnClickListener(v -> startActivity(new Intent(EditBoHocTapActivity.this, QLBoHocTapActivity.class)));
-
-        imgEdit.setOnClickListener(v -> {
-            String ten = edtBoHocTap.getText().toString().trim();
-            if (ten.isEmpty()) {
-                Toast.makeText(EditBoHocTapActivity.this, "Chưa điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-            } else {
-                updateBoHocTap(ten);
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EditBoHocTapActivity.this, QLBoHocTapActivity.class));
             }
         });
+        imgEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String ten = edtBoHocTap.getText().toString().trim();
+                if (ten.isEmpty()) {
+                    Toast.makeText(EditBoHocTapActivity.this, "Chưa điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                } else {
+                    updateBoHocTap(ten);
+                }
+            }
+        });
+
     }
 
     private void fetchBoHocTap() {

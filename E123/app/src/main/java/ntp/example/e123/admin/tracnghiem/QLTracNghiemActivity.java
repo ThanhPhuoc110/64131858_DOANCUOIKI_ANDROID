@@ -57,17 +57,23 @@ public class QLTracNghiemActivity extends AppCompatActivity {
         lvTracNghiem.setAdapter(adapter);
 
         fetchTracNghiem();
-
-        imgBack.setOnClickListener(v -> {
-            startActivity(new Intent(QLTracNghiemActivity.this, QLBoTracNghiemActivity.class));
-            finish();
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(QLTracNghiemActivity.this, QLBoTracNghiemActivity.class));
+                finish();
+            }
         });
 
-        imgAdd.setOnClickListener(v -> {
-            Intent intent = new Intent(QLTracNghiemActivity.this, AddTracNghiemActivity.class);
-            intent.putExtra("idBoTracNghiem", idBoHocTap);
-            startActivity(intent);
+        imgAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QLTracNghiemActivity.this, AddTracNghiemActivity.class);
+                intent.putExtra("idBoTracNghiem", idBoHocTap);
+                startActivity(intent);
+            }
         });
+
     }
 
     private void fetchTracNghiem() {

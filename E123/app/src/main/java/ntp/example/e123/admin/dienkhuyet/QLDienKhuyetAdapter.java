@@ -40,7 +40,7 @@ public class QLDienKhuyetAdapter extends BaseAdapter {
         return position;
     }
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.row_dienkhuyet, null);
 
         TextView txtTenDienKhuyet = view.findViewById(R.id.tvTenDienKhuyet);
@@ -50,11 +50,14 @@ public class QLDienKhuyetAdapter extends BaseAdapter {
         CauDienKhuyet dk = list.get(position);
         txtTenDienKhuyet.setText(dk.getNoiDung());
 
-        imgEdit.setOnClickListener(v -> {
+        imgEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             Intent intent = new Intent(context, EditDienKhuyetActivity.class);
             intent.putExtra("ID_DK", dk.getIdCau());
             intent.putExtra("ID_Bo", dk.getIdBo());
             context.startActivity(intent);
+        }
         });
 
         imgDelete.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +65,7 @@ public class QLDienKhuyetAdapter extends BaseAdapter {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Xác nhận xóa");
-                builder.setMessage("Bạn chắc chắn muốn xóa từ vựng này?");
+                builder.setMessage("Bạn chắc chắn muốn xóa câu điền khuyết này?");
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

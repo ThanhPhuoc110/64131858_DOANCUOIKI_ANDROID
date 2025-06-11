@@ -2,6 +2,8 @@ package ntp.example.e123.admin.dienkhuyet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -46,19 +48,25 @@ public class QLBoDienKhuyetActivity extends AppCompatActivity {
 
 
         fetchBoDienKhuyet();
-
-        imgBack.setOnClickListener(v -> {
-            Intent intent = new Intent(QLBoDienKhuyetActivity.this, AdminActivity.class);
-            finishAffinity();
-            startActivity(intent);
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(QLBoDienKhuyetActivity.this, AdminActivity.class);
+                finishAffinity();
+                startActivity(intent);
+            }
         });
 
-        lvBoDienKhuyet.setOnItemClickListener((parent, view, position, id) -> {
-            String idBo = listBoDienKhuyet.get(position).getIdBo();
-            Intent intent = new Intent(QLBoDienKhuyetActivity.this, QLDienKhuyetActivity.class);
-            intent.putExtra("idBoDienKhuyet", idBo);
-            startActivity(intent);
+        lvBoDienKhuyet.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String idBo = listBoDienKhuyet.get(position).getIdBo();
+                Intent intent = new Intent(QLBoDienKhuyetActivity.this, QLDienKhuyetActivity.class);
+                intent.putExtra("idBoDienKhuyet", idBo);
+                startActivity(intent);
+            }
         });
+
     }
     private void fetchBoDienKhuyet() {
         boDienKhuyetRef.addValueEventListener(new ValueEventListener() {

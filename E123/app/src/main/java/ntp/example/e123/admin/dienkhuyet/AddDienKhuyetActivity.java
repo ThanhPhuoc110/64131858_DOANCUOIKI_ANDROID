@@ -46,7 +46,12 @@ public class AddDienKhuyetActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        imgAdd.setOnClickListener(v -> addDienKhuyet());
+        imgAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addDienKhuyet();
+            }
+        });
 
     }
     private void addDienKhuyet() {

@@ -39,10 +39,17 @@ public class Login extends AppCompatActivity {
         instance = this;
         btnDangnhap = findViewById(R.id.buttonDangnhap);
         tvDangky = findViewById(R.id.textView_register);
+        tvforgotPassword= findViewById(R.id.textView_forgotPassword);
         edttaikhoan = findViewById(R.id.editTextUser);
         edtmatkhau = findViewById(R.id.editTextPass);
         mAuth = FirebaseAuth.getInstance();
         userRef = FirebaseDatabase.getInstance().getReference("User");
+        tvforgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this,Forgot_PassActivity.class));
+            }
+        });
 btnDangnhap.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {

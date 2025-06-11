@@ -52,13 +52,16 @@ public class EditDienKhuyetActivity extends AppCompatActivity {
         TextView title =findViewById(R.id.textView);
         title.setText("Sửa câu điền khuyết");
         fetchDienKhuyet();
-
-        imgBack.setOnClickListener(v -> {
-            Intent intent = new Intent(EditDienKhuyetActivity.this, QLDienKhuyetActivity.class);
-            intent.putExtra("idBoDienKhuyet", idBoDienKhuyet);
-            startActivity(intent);
-            finish();
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EditDienKhuyetActivity.this, QLDienKhuyetActivity.class);
+                intent.putExtra("idBoDienKhuyet", idBoDienKhuyet);
+                startActivity(intent);
+                finish();
+            }
         });
+
 
         imgEdit.setOnClickListener(new View.OnClickListener() {
             @Override

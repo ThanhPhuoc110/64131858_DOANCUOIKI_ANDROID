@@ -2,6 +2,7 @@ package ntp.example.e123.admin.bohoctap;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -25,11 +26,11 @@ import ntp.example.e123.admin.AdminActivity;
 import ntp.example.e123.bohoctap.BoHocTap;
 
 public class QLBoHocTapActivity extends AppCompatActivity {
-    private ArrayList<BoHocTap> listBHT;
-    private QLBoHocTapAdapter adapter;
-    private ImageView imgBack, imgAdd;
-    private ListView listViewBHT;
-    private DatabaseReference boHocTapRef;
+ ArrayList<BoHocTap> listBHT;
+ QLBoHocTapAdapter adapter;
+ ImageView imgBack, imgAdd;
+ ListView listViewBHT;
+ DatabaseReference boHocTapRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,19 @@ public class QLBoHocTapActivity extends AppCompatActivity {
         adapter = new QLBoHocTapAdapter(this, listBHT);
         listViewBHT.setAdapter(adapter);
         fetchBoHocTap();
-        imgBack.setOnClickListener(v -> startActivity(new Intent(QLBoHocTapActivity.this, AdminActivity.class)));
-        imgAdd.setOnClickListener(v -> startActivity(new Intent(QLBoHocTapActivity.this, AddBoHocTapActivity.class)));
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(QLBoHocTapActivity.this, AdminActivity.class));
+            }
+        });
+        imgAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(QLBoHocTapActivity.this, AddBoHocTapActivity.class));
+            }
+        });
+
     }
     private void fetchBoHocTap() {
         boHocTapRef.addValueEventListener(new ValueEventListener() {

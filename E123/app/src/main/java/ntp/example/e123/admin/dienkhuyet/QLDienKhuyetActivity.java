@@ -2,6 +2,7 @@ package ntp.example.e123.admin.dienkhuyet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -55,14 +56,21 @@ public class QLDienKhuyetActivity extends AppCompatActivity {
         lvDienKhuyet.setAdapter(adapter);
 
         fetchDienKhuyet();
-        imgBack.setOnClickListener(v -> {
-            startActivity(new Intent(QLDienKhuyetActivity.this, QLBoDienKhuyetActivity.class));
-            finish();
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(QLDienKhuyetActivity.this, QLBoDienKhuyetActivity.class));
+                finish();
+            }
         });
-        imgAdd.setOnClickListener(v -> {
+
+        imgAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             Intent intent = new Intent(QLDienKhuyetActivity.this, AddDienKhuyetActivity.class);
             intent.putExtra("idBoDienKhuyet", idBoDienKhuyet);
             startActivity(intent);
+            }
         });
 
 
