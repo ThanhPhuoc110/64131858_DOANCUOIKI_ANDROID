@@ -52,7 +52,7 @@ public class FinishDKActivity extends AppCompatActivity {
         txtFinalScore.setText(" " + score);
 
         if (questionTrue >= 4) {
-            txtFinalText.setText("Almost there!!");
+            txtFinalText.setText("Awesome!!");
         } else {
             txtFinalText.setText("Good luck next time!!");
         }

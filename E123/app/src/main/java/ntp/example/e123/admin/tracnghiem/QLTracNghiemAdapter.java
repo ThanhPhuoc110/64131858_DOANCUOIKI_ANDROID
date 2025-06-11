@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -69,28 +71,44 @@ public class QLTracNghiemAdapter extends BaseAdapter {
             context.startActivity(intent);
         });
 
-        imgDelete.setOnClickListener(v -> showDeleteDialog(tn.getIdCau()));
+        imgDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Xác nhận xóa");
+                builder.setMessage("Bạn chắc chắn muốn xóa từ vựng này?");
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteTracNghiem(tn.getIdCau());
+                    }
+                });
+                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.create().show();
+            }
+        });
 
         return view;
     }
 
-    private void showDeleteDialog(String idCau) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Xác nhận xóa")
-                .setMessage("Bạn chắc chắn muốn xóa câu trắc nghiệm này?")
-                .setPositiveButton("Có", (dialog, which) -> deleteTracNghiem(idCau))
-                .setNegativeButton("Không", null)
-                .show();
-    }
 
     private void deleteTracNghiem(String idCau) {
-        tracNghiemRef.child(idCau).removeValue().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
+        tracNghiemRef.child(idCau).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
 
-                Toast.makeText(context, "Xóa thành công!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(context, "Xóa thất bại!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Xóa thành công!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Xóa thất bại!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
     }
 }

@@ -10,8 +10,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -125,17 +128,17 @@ imgEdit.setOnClickListener(new View.OnClickListener() {
         tuVungRef.child(idTuVung).child("tu").setValue(tu);
         tuVungRef.child(idTuVung).child("dichnghia").setValue(nghia);
         tuVungRef.child(idTuVung).child("loaitu").setValue(loaitu);
-        tuVungRef.child(idTuVung).child("anh").setValue(imageUrl)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(EditTuVungActivity.this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
-                        finish();
-                    } else {
-                        Toast.makeText(EditTuVungActivity.this, "Cập nhật thất bại!", Toast.LENGTH_SHORT).show();
+        tuVungRef.child(idTuVung).child("anh").setValue(imageUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(EditTuVungActivity.this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            Toast.makeText(EditTuVungActivity.this, "Cập nhật thất bại!", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(EditTuVungActivity.this, "Lỗi Firebase: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
+
     }
 }

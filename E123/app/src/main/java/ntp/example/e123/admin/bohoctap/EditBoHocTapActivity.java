@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
@@ -77,13 +79,17 @@ public class EditBoHocTapActivity extends AppCompatActivity {
     }
 
     private void updateBoHocTap(String tenBo) {
-        boHocTapRef.child("tenBo").setValue(tenBo).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Toast.makeText(EditBoHocTapActivity.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(EditBoHocTapActivity.this, QLBoHocTapActivity.class));
-            } else {
-                Toast.makeText(EditBoHocTapActivity.this, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+        boHocTapRef.child("tenBo").setValue(tenBo).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(EditBoHocTapActivity.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(EditBoHocTapActivity.this, QLBoHocTapActivity.class));
+                } else {
+                    Toast.makeText(EditBoHocTapActivity.this, "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
     }
 }

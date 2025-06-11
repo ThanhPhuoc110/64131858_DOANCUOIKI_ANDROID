@@ -82,17 +82,12 @@ public class AddTracNghiemActivity extends AppCompatActivity {
             return;
         }
 
-        // Tạo ID tự động từ Firebase
         String idCau = tracNghiemRef.push().getKey();
         if (idCau == null) {
             Toast.makeText(this, "Lỗi tạo ID câu hỏi!", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        // Tạo đối tượng câu hỏi
         TracNghiem tracNghiem = new TracNghiem(idCau, idBoTracNghiem, noiDung, dapAnA, dapAnB, dapAnC, dapAnD, dapAnTrue);
-
-        // Lưu câu hỏi vào Firebase
         tracNghiemRef.child(idCau).setValue(tracNghiem)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {

@@ -34,8 +34,13 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        AnhXa();
-        mAuth = FirebaseAuth.getInstance();
+        tvDangNhap = findViewById(R.id.textView_login);
+        edtHoTen = findViewById(R.id.editTextEmailNav);
+        edtEmail = findViewById(R.id.editTextEmail);
+        edtSdt = findViewById(R.id.editTextSdt);
+        edtMatKhau = findViewById(R.id.editTextMatKhau);
+        edtXacNhan = findViewById(R.id.editTextXacNhan);
+        btnSignUp = findViewById(R.id.buttonSignUp);        mAuth = FirebaseAuth.getInstance();
 
         tvDangNhap.setOnClickListener(v -> {
             Intent intent = new Intent(SignupActivity.this, Login.class);
@@ -81,13 +86,5 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void AnhXa() {
-        tvDangNhap = findViewById(R.id.textView_login);
-        edtHoTen = findViewById(R.id.editTextEmailNav);
-        edtEmail = findViewById(R.id.editTextEmail);
-        edtSdt = findViewById(R.id.editTextSdt);
-        edtMatKhau = findViewById(R.id.editTextMatKhau);
-        edtXacNhan = findViewById(R.id.editTextXacNhan);
-        btnSignUp = findViewById(R.id.buttonSignUp);
-    }
+
 }

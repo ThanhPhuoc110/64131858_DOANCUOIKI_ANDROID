@@ -19,11 +19,8 @@ import ntp.example.e123.R;
 public class MessageObject {
     private static MessageObject instance = new MessageObject();
 
-    //make the constructor private so that this class cannot be
-    //instantiated
     private MessageObject(){}
 
-    //Get the only object available
     public static MessageObject getInstance(){
         return instance;
     }

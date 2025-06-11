@@ -8,8 +8,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -58,18 +61,20 @@ public class AddDienKhuyetActivity extends AppCompatActivity {
         }
 
 
-
-
-        dienKhuyetRef.child(idCau).setValue(caudienkhuyet).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Toast.makeText(this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AddDienKhuyetActivity.this, QLDienKhuyetActivity.class);
-                intent.putExtra("idBoDienKhuyet", idBoDienKhuyet);
-                startActivity(intent);
-            } else {
-                Toast.makeText(this, "Thêm thất bại!", Toast.LENGTH_SHORT).show();
+        dienKhuyetRef.child(idCau).setValue(caudienkhuyet).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(AddDienKhuyetActivity.this, "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AddDienKhuyetActivity.this, QLDienKhuyetActivity.class);
+                    intent.putExtra("idBoDienKhuyet", idBoDienKhuyet);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(AddDienKhuyetActivity.this, "Thêm thất bại!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
     }
 
 }

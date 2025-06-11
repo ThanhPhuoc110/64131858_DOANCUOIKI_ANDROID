@@ -3,6 +3,7 @@ package ntp.example.e123.tracnghiem;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -65,18 +66,23 @@ public class DSTracNghiemActivity extends AppCompatActivity {
 
         cauTracNghiems = new ArrayList<>();
         fetchCauTracNghiem();
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                kiemTraDA();
 
-        btnConfirm.setOnClickListener(v -> {
-            kiemTraDA();
-            indexCau++;
-            hienThiCauHoi();
+            }
         });
+        btnQuit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DSTracNghiemActivity.this, TracNghiemActivity.class);
+                startActivity(intent);
+                finish();
+            }
+    });
 
-        btnQuit.setOnClickListener(v -> {
-            Intent intent = new Intent(DSTracNghiemActivity.this, TracNghiemActivity.class);
-            startActivity(intent);
-            finish();
-        });
+
     }
 
     private void fetchCauTracNghiem() {
@@ -136,19 +142,21 @@ public class DSTracNghiemActivity extends AppCompatActivity {
                 btnOp3.isChecked() && correctAnswer == 3 || btnOp4.isChecked() && correctAnswer == 4) {
             dapAnNguoiDung.setTextColor(Color.GREEN);
             questionTrue++;
-            indexCau++;
             score += 5;
         }else {
             dapAnNguoiDung.setTextColor(Color.RED);
             dapAnNguoiDung.startAnimation(Baoloi());
+
         }
+        indexCau++;
+
 
         txtScore.setText("Điểm: " + score);
         rdgChoices.postDelayed(new Runnable() {
             @Override
             public void run() {
-                dapAnNguoiDung.setTextColor(Color.BLACK);
                 hienThiCauHoi();
+                dapAnNguoiDung.setTextColor(Color.BLACK);
 
             }
         },2000);

@@ -60,7 +60,6 @@ public class AddBoHocTapActivity extends AppCompatActivity {
                     });
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(AddBoHocTapActivity.this, "Lỗi lấy dữ liệu!", Toast.LENGTH_SHORT).show();

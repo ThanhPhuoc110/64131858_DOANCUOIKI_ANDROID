@@ -63,7 +63,7 @@ public class DSTuVungActivity extends AppCompatActivity {
 
     private void fetchTuVung() {
         if (idBoHocTap == null || idBoHocTap.isEmpty()) {
-            Toast.makeText(this, "Lỗi: Không có ID bộ học tập!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Lỗi: Không có ID bộ học tập", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -77,7 +77,6 @@ public class DSTuVungActivity extends AppCompatActivity {
                 }
                 adapter.notifyDataSetChanged();
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Toast.makeText(DSTuVungActivity.this, "Lỗi tải dữ liệu!", Toast.LENGTH_SHORT).show();

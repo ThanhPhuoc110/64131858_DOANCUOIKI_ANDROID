@@ -1,6 +1,7 @@
 package ntp.example.e123.admin.tuvung;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,15 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
-
-import androidx.annotation.NonNull;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 
 import java.util.ArrayList;
 
@@ -28,12 +23,12 @@ import ntp.example.e123.hoctuvung.TuVung;
 public class QLTuVungAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<TuVung> list;
-    private DatabaseReference databaseRef;
+    private DatabaseReference tuvungRef;
 
     public QLTuVungAdapter(Context context, ArrayList<TuVung> list) {
         this.context = context;
         this.list = list;
-        databaseRef = FirebaseDatabase.getInstance().getReference("TuVung");
+        tuvungRef = FirebaseDatabase.getInstance().getReference("TuVung");
     }
 
     @Override
@@ -66,24 +61,39 @@ public class QLTuVungAdapter extends BaseAdapter {
         imgEdit.setOnClickListener(v -> {
             Intent intent = new Intent(context, EditTuVungActivity.class);
             intent.putExtra("ID_TV", tv.getIdTu());
-            intent.putExtra("idBoTuVung", tv.getIdBoHocTap()); // Truyền ID bộ học tập
+            intent.putExtra("idBoTuVung", tv.getIdBoHocTap());
             context.startActivity(intent);
         });
-
-        imgDelete.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setTitle("Xác nhận xóa");
-            builder.setMessage("Bạn chắc chắn muốn xóa từ vựng này?");
-            builder.setPositiveButton("Có", (dialog, which) -> deleteTuVung(tv.getIdTu()));
-            builder.setNegativeButton("Không", (dialog, which) -> {});
-            builder.create().show();
+        imgDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Xác nhận xóa");
+                builder.setMessage("Bạn chắc chắn muốn xóa từ vựng này?");
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteTuVung(tv.getIdTu());
+                    }
+                });
+                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                       dialog.dismiss();
+                    }
+                });
+                builder.create().show();
+            }
         });
+
+
 
         return view;
     }
 
     private void deleteTuVung(String idTu) {
-        databaseRef.child(idTu).removeValue().addOnCompleteListener(task -> {
+        tuvungRef.child(idTu).removeValue();
+        tuvungRef.child(idTu).removeValue().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
             } else {

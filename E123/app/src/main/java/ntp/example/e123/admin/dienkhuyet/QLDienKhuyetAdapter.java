@@ -2,6 +2,7 @@ package ntp.example.e123.admin.dienkhuyet;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,15 +57,27 @@ public class QLDienKhuyetAdapter extends BaseAdapter {
             context.startActivity(intent);
         });
 
-        imgDelete.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setTitle("Xác nhận xóa");
-            builder.setMessage("Bạn chắc chắn muốn xóa câu điền khuyết này?");
-            builder.setPositiveButton("Có", (dialog, which) -> deleteDienKhuyet(dk.getIdCau()));
-            builder.setNegativeButton("Không", (dialog, which) -> {});
-            builder.create().show();
+        imgDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Xác nhận xóa");
+                builder.setMessage("Bạn chắc chắn muốn xóa từ vựng này?");
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteDienKhuyet(dk.getIdCau());
+                    }
+                });
+                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.create().show();
+            }
         });
-
         return view;
     }
     private void deleteDienKhuyet(String idCau) {

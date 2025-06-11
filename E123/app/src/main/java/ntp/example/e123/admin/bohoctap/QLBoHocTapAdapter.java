@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -28,12 +30,12 @@ import ntp.example.e123.bohoctap.BoHocTap;
 public class QLBoHocTapAdapter extends BaseAdapter {
     private Context context;
     private ArrayList<BoHocTap> list;
-    private DatabaseReference databaseRef;
+    private DatabaseReference boHocTapeRef;
 
     public QLBoHocTapAdapter(Context context, ArrayList<BoHocTap> list) {
         this.context = context;
         this.list = list;
-        databaseRef = FirebaseDatabase.getInstance().getReference();
+        boHocTapeRef = FirebaseDatabase.getInstance().getReference();
     }
 
     @Override
@@ -62,47 +64,60 @@ public class QLBoHocTapAdapter extends BaseAdapter {
 
         BoHocTap bht = list.get(position);
         txtTenBo.setText(bht.getTenBo());
-
-        imgEdit.setOnClickListener(v -> {
-            Intent intent = new Intent(context, EditBoHocTapActivity.class);
-            intent.putExtra("ID_BHT", bht.getIdBo());
-            context.startActivity(intent);
+        imgEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, EditBoHocTapActivity.class);
+                intent.putExtra("ID_BHT", bht.getIdBo());
+                context.startActivity(intent);
+            }
         });
 
-        imgDelete.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setTitle("Xác nhận xóa");
-            builder.setMessage("Bạn chắc chắn muốn xóa bộ học tập này?");
-            builder.setPositiveButton("Có", (dialog, which) -> {
-                deleteBoHocTap(bht.getIdBo());
-            });
-            builder.setNegativeButton("Không", (dialog, which) -> {});
-            builder.create().show();
+        imgDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Xác nhận xóa");
+                builder.setMessage("Bạn chắc chắn muốn xóa từ vựng này?");
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteBoHocTap(bht.getIdBo());
+                    }
+                });
+                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.create().show();
+            }
         });
+
 
         return view;
     }
 
     private void deleteBoHocTap(String idBo) {
-        DatabaseReference boHocTapRef = databaseRef.child("BoHocTap").child(idBo);
+        boHocTapeRef.child("DienKhuyet").orderByChild("idBo").equalTo(idBo).addListenerForSingleValueEvent(deleteData());
+        boHocTapeRef.child("TracNghiem").orderByChild("idBo").equalTo(idBo).addListenerForSingleValueEvent(deleteData());
+        boHocTapeRef.child("TuVung").orderByChild("idBo").equalTo(idBo).addListenerForSingleValueEvent(deleteData());
 
-        // Xóa dữ liệu liên quan
-        databaseRef.child("DienKhuyet").orderByChild("idBo").equalTo(idBo).addListenerForSingleValueEvent(deleteDataListener());
-
-        databaseRef.child("TracNghiem").orderByChild("idBo").equalTo(idBo).addListenerForSingleValueEvent(deleteDataListener());
-        databaseRef.child("TuVung").orderByChild("idBo").equalTo(idBo).addListenerForSingleValueEvent(deleteDataListener());
-
-        // Xóa bộ học tập
-        boHocTapRef.removeValue().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+        boHocTapeRef.child("BoHocTap").child(idBo).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
     }
 
-    private ValueEventListener deleteDataListener() {
+    private ValueEventListener deleteData() {
         return new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

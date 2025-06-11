@@ -92,7 +92,7 @@ public class OnTapActivity extends AppCompatActivity {
                     Collections.shuffle(danhSachTuVung);
                     hienThiCauHoi();
                 } else {
-                    Toast.makeText(OnTapActivity.this, "Không có từ vựng để kiểm tra!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(OnTapActivity.this, "Không có từ vựng để kiểm tra", Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }
@@ -106,8 +106,6 @@ public class OnTapActivity extends AppCompatActivity {
 
      void hienThiCauHoi() {
         if (indexCauHoi >= danhSachTuVung.size()) {
-
-
 
             Intent intent = new Intent(OnTapActivity.this, FinishHTVActivity.class);
             intent.putExtra("score", diemSo);

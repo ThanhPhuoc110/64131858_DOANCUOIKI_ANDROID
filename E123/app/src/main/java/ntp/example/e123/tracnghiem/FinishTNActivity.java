@@ -3,15 +3,11 @@ package ntp.example.e123.tracnghiem;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +17,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import ntp.example.e123.MainActivity;
 import ntp.example.e123.R;
-import ntp.example.e123.dienkhuyet.FinishDKActivity;
 
 public class FinishTNActivity extends AppCompatActivity {
     private TextView txtCongrats, txtFinalQTrue, txtFinalText, txtFinalScore;
@@ -54,12 +49,12 @@ public class FinishTNActivity extends AppCompatActivity {
         txtFinalScore.setText(" " + score);
 
         if (questionTrue >= 4) {
-            txtFinalText.setText("Almost there!!");
+            txtFinalText.setText("Awesome!!");
         } else {
             txtFinalText.setText("Good luck next time!!");
         }
 
-        updateUserScore();
+        capNhatdiem();
 
         btnReturn.setOnClickListener(v -> {
             Intent returnIntent = new Intent(FinishTNActivity.this, MainActivity.class);
@@ -68,14 +63,13 @@ public class FinishTNActivity extends AppCompatActivity {
         });
 
     }
-    private void updateUserScore() {
+    private void capNhatdiem() {
         userRef.child("point").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 int currentScore = snapshot.exists() ? snapshot.getValue(Integer.class) : 0;
                 int newScore = currentScore + score;
 
-                // Lưu điểm mới
                 userRef.child("point").setValue(newScore).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         Toast.makeText(FinishTNActivity.this, "Điểm đã cập nhật ", Toast.LENGTH_SHORT).show();

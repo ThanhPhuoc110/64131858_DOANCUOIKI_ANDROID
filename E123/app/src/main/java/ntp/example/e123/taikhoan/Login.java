@@ -9,8 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -54,24 +58,30 @@ btnDangnhap.setOnClickListener(new View.OnClickListener() {
             messageObject.ShowDialogMessage(Gravity.CENTER, Login.this, "Hãy nhập mật khẩu ", 0, new Intent(Login.this, MainActivity.class));
             return;
         }
+        mAuth.signInWithEmailAndPassword(email, matkhau).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    MessageObject.getInstance().ShowDialogMessage(Gravity.CENTER, Login.this, "Đăng nhập thành công", 1, new Intent(Login.this, MainActivity.class));
 
-        mAuth.signInWithEmailAndPassword(email, matkhau).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                MessageObject.getInstance().ShowDialogMessage(Gravity.CENTER, Login.this, "Đăng nhập thành công", 1, new Intent(Login.this, MainActivity.class));
 
-
-            } else {
-                messageObject.ShowDialogMessage(Gravity.CENTER, Login.this, "Sai Email hoặc mật khẩu!", 0, new Intent(Login.this, MainActivity.class));
+                } else {
+                    messageObject.ShowDialogMessage(Gravity.CENTER, Login.this, "Sai Email hoặc mật khẩu!", 0, new Intent(Login.this, MainActivity.class));
+                }
             }
         });
+
     }
 });
 
-
-        tvDangky.setOnClickListener(v -> {
-            Intent intent = new Intent(Login.this, SignupActivity.class);
-            startActivity(intent);
+        tvDangky.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, SignupActivity.class);
+                startActivity(intent);
+            }
         });
+
     }
 
 
