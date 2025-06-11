@@ -22,7 +22,7 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
 {
   "BoHocTap": {
     "idBo1": {
-      "idBo" : idBo1
+      "idBo" : idBo1,
       "tenBo": "Bộ học tập số 1",
       "stt": "1"
     }
@@ -90,13 +90,3 @@ SunnyEnlish là một ứng dụng giúp bạn học và thực hành nhiều ng
 
 
 
-
-
-
-## 🛠 Cài đặt
-Dễ dàng cài đặt ứng dụng bằng cách:
-```sh
-git clone https://github.com/yourusername/LanguageMaster.git
-cd LanguageMaster
-npm install
-npm start
